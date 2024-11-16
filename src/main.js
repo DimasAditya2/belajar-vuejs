@@ -20,10 +20,9 @@ const app = createApp(App)
 //   .component('OptionComponent', OptionComponent)
 //   .component('MainButton', MainButton)
 
-app.component("CompositionComponent", CompositionComponent)
-app.component("OptionComponent", OptionComponent)
-app.component("MainButton", MainButton)
-
+app.component('CompositionComponent', CompositionComponent)
+app.component('OptionComponent', OptionComponent)
+app.component('MainButton', MainButton)
 
 app.mount('#app')
 

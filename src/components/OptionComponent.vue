@@ -1,19 +1,18 @@
 <script>
-  export default {
-    data() {
-      return {
-        apiStyle: 'Options component'
-      }
-    },
-
-    methods: {
-      showName() {
-        console.log(this.apiStyle)
-      }
+export default {
+  data() {
+    return {
+      apiStyle: 'Options component',
     }
-  }
-</script>
+  },
 
+  methods: {
+    showName() {
+      console.log(this.apiStyle)
+    },
+  },
+}
+</script>
 
 <template>
   <h1>{{ apiStyle }}</h1>
