@@ -1,35 +1,16 @@
 <script setup>
-defineOptions({
-  name: 'mainButton',
+const { title, disabled = false } = defineProps({
+  title: {
+    type: String,
+    default: 'title'
+  },
+  disabled: Boolean
 })
-const buttonAttr = {
-  type: 'button',
-  disabled: isLoading,
-  class: 'text-center',
-  id: 1,
-}
-
-const renderIsLoading = () => {
-  if (isLoading) {
-    return 'loading'
-  } else {
-    return 'submit'
-  }
-}
-
-const isLoading = true
-const url = {
-  attr: 'href',
-  link: '/him'
-}
+console.log(title)
 </script>
 
 <template>
-  <a :[url.attr]="url.link">
-    <button v-bind="buttonAttr" :id="`id-${buttonAttr.class}`">
-      {{ renderIsLoading() }}
-    </button>
-  </a>
+  <button :disabled>{{ title }}</button>
 </template>
 
 <style scoped></style>
