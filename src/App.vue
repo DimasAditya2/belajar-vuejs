@@ -1,55 +1,31 @@
 <script setup>
-import { reactive, ref } from 'vue'
+import { computed, reactive, ref } from 'vue';
 
-const greeting = 'Hello World!'
-const blogPost = '<p style="color: red;">Ini Adalah BlogPost</p>'
-const idBlog = 1
-const blogClass = 'text-4xl flex flex-col justify-center'
-const submitButton = {
-  title: 'Submit',
-  disabled: false,
-}
+  const author = reactive({
+    name: 'John Doe',
+    books: [
+      'vue 1 - Advanced Guide',
+      'vue 2 - Basic Guide',
+      'vue 3 - The Mystery'
+    ]
+  })
 
-const count = ref(1)
+  const count = ref(0)
 
-const increment = () => {
-  count.value++
-}
+  const isPublished = computed(() => {
+    console.log('test')
+    return author.books.length > 0 ? 'Published yes' : 'Published no'
+  })
 
-const user = reactive(['dimas', 'dwi'])
+  const increment = () => {
+    count.value++
+  }
 </script>
 
 <template>
-  <h1>{{ greeting }}</h1>
-  <OptionComponent />
-  <CompositionComponent />
-
-  <MainButton :title="`Button`" />
-  <MainButton :title="`Submit`" />
-  <MainButton v-bind="submitButton" />
-  <!-- special casting -->
-  <MainButton disabled />
-
-  <!-- Attribute Bindings -->
-  <!-- The v-bind directive instructs Vue to keep the element's id attribute in sync with the component's dynamicId property. If the bound value is null or undefined, then the attribute will be removed from the rendered element. -->
-  <div :id="idBlog" :class="blogClass">
-    {{ blogPost }}
-  </div>
-  <div v-html="blogPost"></div>
-  <HomePage />
-
-  <!-- this is a kebab-case -->
-  <button-counter />
-
-  <!-- props -->
-  <BlogPost title="My journey with Vue" />
-
+  <p>Has Published books:</p>
+  <span>{{ isPublished }}</span>
   <button @click="increment">{{ count }}</button>
-
-  <div>
-    <h1>name: {{ user[0] }}</h1>
-    <button @click="user.push('fifi')">Tambah user {{ user[2] }}</button>
-  </div>
 </template>
 
 <style scoped></style>
