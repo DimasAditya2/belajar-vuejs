@@ -1,9 +1,17 @@
 <script setup>
+import { ref } from 'vue';
+import MainButton from './components/MainButton.vue';
+const disabled = ref(false)
+
+const isDisabled = () => {
+  disabled.value = !disabled.value
+}
+
 
 </script>
 
 <template>
-  <h1>Hello Vue</h1>
+  <MainButton @click="isDisabled" :disabled="disabled" class="halo"/>
 </template>
 
 <style scoped></style>

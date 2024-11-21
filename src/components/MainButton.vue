@@ -1,16 +1,41 @@
 <script setup>
-const { title, disabled = false } = defineProps({
+const { title, disabled } = defineProps({
   title: {
     type: String,
-    default: 'title'
+    default: 'title',
   },
-  disabled: Boolean
+  disabled: {
+    type: Boolean,
+    default: true,
+  },
 })
-console.log(title)
+
+const fontColor = '#000'
+const availableColor = '#fff'
 </script>
 
 <template>
-  <button :disabled>{{ title }}</button>
+  <button
+    :disabled
+    class="button"
+    :class="{ disabled: disabled }"
+    :style="{color: disabled ? fontColor : availableColor}"
+  >
+    {{ title }}
+  </button>
 </template>
 
-<style scoped></style>
+<style scoped>
+.button {
+  background-color: salmon;
+  border: none;
+  color: white;
+  padding: 5px 9px;
+  width: 100px;
+  border-radius: 50px;
+}
+
+.disabled {
+  background-color: gray;
+}
+</style>
