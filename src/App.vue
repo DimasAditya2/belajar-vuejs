@@ -1,9 +1,12 @@
 <script setup>
-import EventHandling from './components/EventHandling.vue'
+import MainButton from './components/MainButton.vue'
+import { ref } from 'vue'
+const count = ref(0)
 </script>
 
 <template>
-  <EventHandling />
+  <p>{{ count }}</p>
+  <MainButton class="button saya" @click="count++" />
 </template>
 
 <style scoped></style>

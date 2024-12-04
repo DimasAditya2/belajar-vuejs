@@ -1,4 +1,14 @@
 <script setup>
+defineOptions({
+  inheritAttrs: true,
+})
+
+import { useAttrs } from 'vue';
+
+const attrs = useAttrs()
+console.log(attrs.class);
+
+
 const { title, disabled } = defineProps({
   title: {
     type: String,
@@ -6,7 +16,7 @@ const { title, disabled } = defineProps({
   },
   disabled: {
     type: Boolean,
-    default: true,
+    default: false,
   },
 })
 
@@ -15,11 +25,13 @@ const availableColor = '#fff'
 </script>
 
 <template>
+  <label>ini button</label>
   <button
+    v-bind="$attrs"
     :disabled
     class="button"
     :class="{ disabled: disabled }"
-    :style="{color: disabled ? fontColor : availableColor}"
+    :style="{ color: disabled ? fontColor : availableColor }"
   >
     {{ title }}
   </button>
